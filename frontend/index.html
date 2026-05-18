@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Fee Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>EduDash</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</li>
+                    <li><i class="fa-solid fa-users"></i> Students</li>
+                    <li><i class="fa-solid fa-file-invoice-dollar"></i> Payments</li>
+                    <li><i class="fa-solid fa-gear"></i> Settings</li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@edudash.edu</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h1>Student Fee Dashboard</h1>
+                    <p>Manage and monitor student fee transactions</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openModal()"><i class="fa-solid fa-plus"></i> Add Record</button>
+                </div>
+            </header>
+
+            <!-- KPI Cards -->
+            <section class="kpi-cards">
+                <div class="card glass">
+                    <div class="card-icon blue"><i class="fa-solid fa-users"></i></div>
+                    <div class="card-details">
+                        <h3>Total Students</h3>
+                        <p id="total-students">0</p>
+                    </div>
+                </div>
+                <div class="card glass">
+                    <div class="card-icon green"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div class="card-details">
+                        <h3>Total Fees Collected</h3>
+                        <p id="total-collected">₹0</p>
+                    </div>
+                </div>
+                <div class="card glass">
+                    <div class="card-icon orange"><i class="fa-solid fa-clock"></i></div>
+                    <div class="card-details">
+                        <h3>Pending Fees</h3>
+                        <p id="total-pending">₹0</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Table -->
+            <section class="table-section glass">
+                <div class="table-header">
+                    <h3>Recent Transactions</h3>
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search students...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="feesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Student Name</th>
+                                <th>Total Fee</th>
+                                <th>Paid Amount</th>
+                                <th>Pending Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="addModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add / Edit Student Fee</h2>
+            <form id="feeForm">
+                <input type="hidden" id="studentId">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Fee</label>
+                    <input type="number" id="totalFee" required>
+                </div>
+                <div class="form-group">
+                    <label>Paid Amount</label>
+                    <input type="number" id="paidAmount" required>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Record</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
